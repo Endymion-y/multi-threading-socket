@@ -17,7 +17,7 @@ const int PORT = 50051;
 
 const int QUEUESIZE = 128;
 const int recv_thread_count = 4;
-const int output_thread_count = 2;
+const int output_thread_count = 1;
 
 int clnt_sock;
 boost::lockfree::queue<int> q(QUEUESIZE);
@@ -109,6 +109,9 @@ int main(){
 
 		std::cout << std::endl;
 		std::cout << "sum = " << sum << std::endl;
+        // Reset
+        sum = 0;
+        done = false;
 	   
 		// Close the sockets
 		close(clnt_sock);
